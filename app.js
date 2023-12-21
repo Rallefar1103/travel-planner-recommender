@@ -8,6 +8,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
+// being called from the core service
 app.post("/recommend", async (req, res) => {
   try {
     const itineraryData = req.body; // change to extract the description
