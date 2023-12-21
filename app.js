@@ -10,7 +10,9 @@ app.use(express.json());
 app.post("/recommend", async (req, res) => {
   try {
     const itineraryData = req.body; // change to extract the description
-    const recommendation = await getChatGPTRecommendation(itineraryData);
+    const recommendation = await getChatGPTRecommendation(
+      itineraryData["description"]
+    );
     res.json({ recommendation });
   } catch (error) {
     console.error(error);
