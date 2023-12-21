@@ -1,20 +1,19 @@
+const { OpenAIApi, Configuration } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openai = new OpenAIApi(configuration);
+
 async function getChatGPTRecommendation(itineraryData) {
   const prompt = createPrompt(itineraryData);
-  const url = process.env.OPEN_API_URL;
 
   // Call the ChatGPT API
-  const response = await axios.post(
-    url,
-    {
-      prompt: prompt,
-      max_tokens: 150,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-    }
-  );
+  const response = await openai.createCompletion("text-davinci-003", {
+    prompt: prompt,
+    max_tokens: 150,
+  });
 
   return response.data.choices[0].text;
 }
