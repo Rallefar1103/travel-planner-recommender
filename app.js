@@ -10,11 +10,11 @@ app.use(express.json());
 
 // being called from the core service
 app.post("/recommend", async (req, res) => {
+  console.log("Made it into the recommender-service!");
   try {
     const itineraryData = req.body; // change to extract the description
-    const recommendation = await getChatGPTRecommendation(
-      itineraryData["description"]
-    );
+    const recommendation = await getChatGPTRecommendation(itineraryData);
+
     res.json({ recommendation });
   } catch (error) {
     console.error(error);
