@@ -12,10 +12,10 @@ app.use(express.json());
 app.post("/recommend", async (req, res) => {
   console.log("Made it into the recommender-service!");
   try {
-    const itineraryData = req.body; // change to extract the description
-    const recommendation = await getChatGPTRecommendation(itineraryData);
+    const itineraryData = req.body;
+    const recommendedItinerary = await getChatGPTRecommendation(itineraryData);
 
-    res.json({ recommendation });
+    res.json({ recommendedItinerary });
   } catch (error) {
     console.error(error);
     res.status(500).send("Error processing recommendation");

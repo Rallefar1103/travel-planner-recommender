@@ -28,10 +28,13 @@ async function getChatGPTRecommendation(itineraryData) {
 }
 
 function createPrompt(itineraryData) {
-  return `Make a detailed itinerary for a 14 day vacation in Copenhagen`;
-  // return `Make a detailed itinerary based on the following information: ${JSON.stringify(
-  //   itineraryData
-  // )}`;
+  let destination = itineraryData.destination;
+  let duration = itineraryData.duration;
+  let budget = itineraryData.budget;
+  let attractions = itineraryData.attractions.join(", ");
+  let restaurants = itineraryData.restaurants.join(", ");
+
+  return `Make a detailed itinerary for a ${duration} day vacation in ${destination} with a budget of ${budget} $ focusing on these attractions ${attractions} and these restaurants ${restaurants}.`;
 }
 
 function _initOPENAI() {
