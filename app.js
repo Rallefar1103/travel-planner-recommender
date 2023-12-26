@@ -10,7 +10,7 @@ app.use(express.json());
 
 // being called from the core service
 app.post("/recommend", async (req, res) => {
-  console.log("Made it into the recommender-service!");
+  console.log("WELCOME TO THE RECOMMENDER SYSTEM!!");
   try {
     const itineraryData = req.body;
     const recommendedItinerary = await getChatGPTRecommendation(itineraryData);
@@ -22,7 +22,7 @@ app.post("/recommend", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Recommender Service running on http://localhost:${PORT}`);
 });

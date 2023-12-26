@@ -6,7 +6,7 @@ async function getChatGPTRecommendation(itineraryData) {
   const prompt = createPrompt(itineraryData);
 
   // Call the ChatGPT API
-  console.log("Lets call the OpenAI API!");
+  console.log("CALLING OpenAI API!");
   const response = await openai.chat.completions.create({
     messages: [
       {
@@ -19,11 +19,6 @@ async function getChatGPTRecommendation(itineraryData) {
     model: "gpt-3.5-turbo",
   });
 
-  console.log(
-    "Here is the response from gpt",
-    response.choices[0].message.content
-  );
-
   return response.choices[0].message.content;
 }
 
@@ -32,9 +27,10 @@ function createPrompt(itineraryData) {
   let duration = itineraryData.duration;
   let budget = itineraryData.budget;
   let attractions = itineraryData.attractions.join(", ");
-  let restaurants = itineraryData.restaurants.join(", ");
+  let restaurant = itineraryData.restaurants.join(", ");
 
-  return `Make a detailed itinerary for a ${duration} day vacation in ${destination} with a budget of ${budget} $ focusing on these attractions ${attractions} and these restaurants ${restaurants}.`;
+  return `Make a detailed itinerary for a ${duration} hour vacation in ${destination} with a budget of ${budget} $ 
+  focusing on this type of ${attractions} and this restaurant for dinner ${restaurant}.`;
 }
 
 function _initOPENAI() {
