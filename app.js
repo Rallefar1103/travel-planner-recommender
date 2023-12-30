@@ -10,7 +10,7 @@ app.use(express.json());
 
 // being called from the core service
 app.post("/recommend", async (req, res) => {
-  console.log("WELCOME TO THE RECOMMENDER SYSTEM!!");
+  console.log("WELCOME TO THE RECOMMENDER SERVICE!!");
   try {
     const itineraryData = req.body;
     const recommendedItinerary = await getChatGPTRecommendation(itineraryData);
