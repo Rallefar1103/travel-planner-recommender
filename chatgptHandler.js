@@ -27,7 +27,7 @@ function createPrompt(itineraryData) {
   let duration = itineraryData.duration;
   let budget = itineraryData.budget;
   let attractions = itineraryData.attractions;
-  let restaurant = itineraryData.restaurants;
+  let restaurant = itineraryData.restaurant;
 
   return `Make a detailed itinerary for a ${duration} hour vacation in ${destination} with a budget of ${budget} $ 
   focusing on this type of ${attractions} and this restaurant for dinner ${restaurant}.`;
