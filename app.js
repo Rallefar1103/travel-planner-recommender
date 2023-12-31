@@ -13,6 +13,7 @@ app.post("/recommend", async (req, res) => {
   console.log("WELCOME TO THE RECOMMENDER SERVICE!!");
   try {
     const itineraryData = req.body;
+
     const recommendedItinerary = await getChatGPTRecommendation(itineraryData);
 
     res.json({ recommendedItinerary });

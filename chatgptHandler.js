@@ -27,10 +27,13 @@ function createPrompt(itineraryData) {
   let duration = itineraryData.duration;
   let budget = itineraryData.budget;
   let attractions = itineraryData.attractions;
-  let restaurant = itineraryData.restaurant;
+  let restaurant = itineraryData.restaurant.name;
+
+  console.log("Restaurant for itinerary: ", restaurant);
 
   return `Make a detailed itinerary for a ${duration} hour vacation in ${destination} with a budget of ${budget} $ 
-  focusing on this type of ${attractions} and this restaurant for dinner ${restaurant}.`;
+  focusing on this type of ${attractions} and this specific restaurant for dinner ${restaurant}. Your response should
+  just start with the first activity - no title, budget or other information in the beginning`;
 }
 
 function _initOPENAI() {
